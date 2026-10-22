@@ -27,46 +27,52 @@
         margin: 100px auto 80px;
         width: 795px;
         height: 300px;
-          
-        /* Novas regras de CSS para organizar o conteúdo lado a lado */
-        .container-generos {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
+      }
+    
+     </style>
+    
+        /* Estilização da lista de gêneros */
         .lista-generos {
-            flex: 1;
             list-style-type: none;
             padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
         }
-        .lista-generos li {
-            padding: 10px;
+        .item-genero {
             background-color: rgb(187, 153, 255);
-            margin-bottom: 8px;
-            cursor: pointer;
-            border: 1px solid black;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 4px;
-        }
-        .lista-generos li:hover {
-            background-color: rgb(150, 110, 220);
-        }
-        .info-generos {
-            flex: 2;
-            background-color: white;
+            margin-bottom: 10px;
             border: 2px solid black;
-            padding: 15px;
             border-radius: 4px;
-            min-height: 120px;
+            overflow: hidden;
         }
-        .texto-info {
-            display: none; /* Esconde os textos inicialmente */
+        .botao-genero {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .texto-info.ativo {
-            display: block; /* Mostra apenas o texto ativo */
-      }
-     </style>
+        .botao-genero:hover {
+            background-color: rgb(160, 120, 240);
+        }
+
+        /* Oculta as informações inicialmente */
+        .conteudo-info {
+            display: none; 
+            padding: 15px;
+            background-color: white;
+            border-top: 2px solid black;
+        }
+
+        /* Classe que o JavaScript vai aplicar para exibir o texto */
+        .item-genero.ativo .conteudo-info {
+            display: block;
 </head>
 <body>
   <header>
@@ -88,56 +94,61 @@
   <h4> Ritmo: </h4>
   <p> É a organização de sons e silêncio caracterizada pela alternância entre tempos fortes e fracos. </p>
   <img src= "images.jpeg" alt="desenho de um metronomo laranja">
-        <!-- Estrutura lado a lado criada com Flexbox -->
-        <div class="container-generos">
-            <ul class="lista-generos">
-                <!-- O atributo data-target conecta a lista ao ID do texto informativo correspondente -->
-                <li data-target="info-blues">Blues</li>
-                <li data-target="info-samba">Samba</li>
-                <li data-target="info-bossa">Bossa nova</li>
-            </ul>
-
-            <div class="info-generos" id="painel-info">
-                <p id="instrucao">Clique em um gênero musical para ver as informações.</p>
-                
-                <div id="info-blues" class="texto-info">
-                    <h3>Blues</h3>
+<h2>Genêros musicais</h2>
+                <!-- Lista interativa onde cada item guarda sua própria informação oculta -->
+        <ul class="lista-generos">
+            <li class="item-genero">
+                <button class="botao-genero">Blues <span>+</span></button>
+                <div class="conteudo-info">
                     <p>Originou-se no extremo sul dos Estados Unidos no final do século XIX. Carrega uma forte carga emocional, focado em estruturas de acordes repetitivas e no uso de notas de "blues" expressivas.</p>
                 </div>
-                <div id="info-samba" class="texto-info">
-                    <h3>Samba</h3>
+            </li>
+            <li class="item-genero">
+                <button class="botao-genero">Samba <span>+</span></button>
+                <div class="conteudo-info">
                     <p>Um dos principais elementos da cultura brasileira. Nascido nas comunidades afro-brasileiras do Rio de Janeiro no início do século XX, destaca-se pelo ritmo sincopado e o uso de instrumentos de percussão.</p>
                 </div>
-                <div id="info-bossa" class="texto-info">
-                    <h3>Bossa nova</h3>
+            </li>
+            <li class="item-genero">
+                <button class="botao-genero">Bossa nova <span>+</span></button>
+                <div class="conteudo-info">
                     <p>Movimento que surgiu no final da década de 1950 no Brasil, misturando elementos do samba com o jazz americano. É marcado por uma batida de violão única e um canto mais suave e intimista.</p>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </main>
 
     <footer>
         <!-- Corrigido o erro de sintaxe da tag 'a' antiga -->
         <a href="https://www.youtube.com/watch?v=mKSymJVMi7k" target="_blank"> aula de musica sobre harmonia, melodia e ritmo </a>
     </footer>
-
-    <!-- Código JavaScript para alternar as informações na tela -->
+   
+    <!-- JavaScript para abrir/fechar as informações -->
     <script>
-        const itensLista = document.querySelectorAll('.lista-generos li');
-        const textosInfo = document.querySelectorAll('.texto-info');
-        const instrucao = document.getElementById('instrucao');
+        const botoes = document.querySelectorAll('.botao-genero');
 
-        itensLista.forEach(item => {
-            item.addEventListener('click', () => {
-                // Esconde a instrução inicial
-                instrucao.style.display = 'none';
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                const itemPai = botao.parentElement;
+                const sinal = botao.querySelector('span');
+                
+                // Fecha os outros que estiverem abertos (opcional)
+                document.querySelectorAll('.item-genero').forEach(item => {
+                    if (item !== itemPai) {
+                        item.classList.remove('ativo');
+                        item.querySelector('span').textContent = '+';
+                    }
+                });
 
-                // Remove a classe 'ativo' de todos os blocos de texto
-                textosInfo.forEach(texto => texto.classList.remove('ativo'));
-
-                // Pega o ID correspondente salvo no item clicado e mostra o bloco correto
-                const targetId = item.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('ativo');
+                // Alterna o estado do item clicado
+                itemPai.classList.toggle('ativo');
+                
+                // Muda o sinal de + para - dependendo se está aberto
+                if (itemPai.classList.contains('ativo')) {
+                    sinal.textContent = '-';
+                } else {
+                    sinal.textContent = '+';
+                }
             });
         });
     </script>

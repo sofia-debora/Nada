@@ -266,34 +266,7 @@ botoes.forEach(botao => {
         textoGenero.classList.remove('mensagem-padrao');
     });
 });
-    <!-- JavaScript para abrir/fechar as informações -->
-    <script>
-        const botoes = document.querySelectorAll('.botao-genero');
 
-        botoes.forEach(botao => {
-            botao.addEventListener('click', () => {
-                const itemPai = botao.parentElement;
-                const sinal = botao.querySelector('span');
-                
-                // Fecha os outros que estiverem abertos (opcional)
-                document.querySelectorAll('.item-genero').forEach(item => {
-                    if (item !== itemPai) {
-                        item.classList.remove('ativo');
-                        item.querySelector('span').textContent = '+';
-                    }
-                });
-
-                // Alterna o estado do item clicado
-                itemPai.classList.toggle('ativo');
-                
-                // Muda o sinal de + para - dependendo se está aberto
-                if (itemPai.classList.contains('ativo')) {
-                    sinal.textContent = '-';
-                } else {
-                    sinal.textContent = '+';
-                }
-            });
-        });
     </script>
 </body>
 </html>

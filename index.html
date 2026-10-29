@@ -105,9 +105,7 @@
     .secao-generos {
         flex-direction: column;
     }
-    }
-     </style>
-    
+}
         /* Estilização da lista de gêneros */
         .lista-generos {
             list-style-type: none;
@@ -149,7 +147,8 @@
 
         /* Classe que o JavaScript vai aplicar para exibir o texto */
         .item-genero.ativo .conteudo-info {
-            display: block;
+            display: block;}
+</style>
 </head>
 <body>
   <header>
@@ -171,7 +170,6 @@
   <h4> Ritmo: </h4>
   <p> É a organização de sons e silêncio caracterizada pela alternância entre tempos fortes e fracos. </p>
   <img src= "images.jpeg" alt="desenho de um metronomo laranja">
-<h2>Genêros musicais</h2>
     <!-- ===================================================
      [ALTERADO/ACRESCENTADO] ESTRUTURA DOS GÊNEROS E PAINEL
      =================================================== -->
@@ -202,43 +200,12 @@
             </button>
         </li>
     </ul>
-
-    <!-- Coluna Direita: Painel onde o texto aparece -->
-    <div class="painel-caracteristicas" id="painelInfo">
-        <h3 id="tituloGenero">Características</h3>
-        <p id="textoGenero" class="mensagem-padrao">Clique em um gênero musical ao lado para ver suas características.</p>
-    </div>
-    </div>
-                <!-- Lista interativa onde cada item guarda sua própria informação oculta -->
-        <ul class="lista-generos">
-            <li class="item-genero">
-                <button class="botao-genero">Blues <span>+</span></button>
-                <div class="conteudo-info">
-                    <p>Originou-se no extremo sul dos Estados Unidos no final do século XIX. Carrega uma forte carga emocional, focado em estruturas de acordes repetitivas e no uso de notas de "blues" expressivas.</p>
-                </div>
-            </li>
-            <li class="item-genero">
-                <button class="botao-genero">Samba <span>+</span></button>
-                <div class="conteudo-info">
-                    <p>Um dos principais elementos da cultura brasileira. Nascido nas comunidades afro-brasileiras do Rio de Janeiro no início do século XX, destaca-se pelo ritmo sincopado e o uso de instrumentos de percussão.</p>
-                </div>
-            </li>
-            <li class="item-genero">
-                <button class="botao-genero">Bossa nova <span>+</span></button>
-                <div class="conteudo-info">
-                    <p>Movimento que surgiu no final da década de 1950 no Brasil, misturando elementos do samba com o jazz americano. É marcado por uma batida de violão única e um canto mais suave e intimista.</p>
-                </div>
-            </li>
-        </ul>
     </main>
-
     <footer>
         <!-- Corrigido o erro de sintaxe da tag 'a' antiga -->
         <a href="https://www.youtube.com/watch?v=mKSymJVMi7k" target="_blank"> aula de musica sobre harmonia, melodia e ritmo </a>
     </footer>
    JavaScript
-
-
 // ===================================================
 // [ALTERADO] JAVASCRIPT QUE ATUALIZA O PAINEL LATERAL
 // ===================================================

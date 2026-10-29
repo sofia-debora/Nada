@@ -172,7 +172,27 @@
   <p> É a organização de sons e silêncio caracterizada pela alternância entre tempos fortes e fracos. </p>
   <img src= "images.jpeg" alt="desenho de um metronomo laranja">
 <h2>Genêros musicais</h2>
-    
+    <!-- ===================================================
+     [ALTERADO/ACRESCENTADO] ESTRUTURA DOS GÊNEROS E PAINEL
+     =================================================== -->
+<h2>Gêneros Musicais</h2>
+
+<div class="secao-generos">
+    <!-- Coluna Esquerda: Lista de Botões -->
+    <ul class="lista-generos">
+        <li class="item-genero">
+            <button class="botao-genero" 
+                    data-titulo="Blues" 
+                    data-info="Originou-se no extremo sul dos Estados Unidos no final do século XIX. Carrega uma forte carga emocional, focado em estruturas de acordes repetitivas e no uso de notas de 'blues' expressivas.">
+                Blues <span>&rarr;</span>
+            </button>
+        </li>
+        <li class="item-genero">
+            <button class="botao-genero" 
+                    data-titulo="Samba" 
+                    data-info="Um dos principais elementos da cultura brasileira. Nascido nas comunidades afro-brasileiras do Rio de Janeiro no início do século XX, destaca-se pelo ritmo sincopado e o uso de instrumentos de percussão.">
+                Samba <span>&rarr;</span>
+            </button>
     </li>
         <li class="item-genero">
             <button class="botao-genero" 
@@ -216,7 +236,36 @@
         <!-- Corrigido o erro de sintaxe da tag 'a' antiga -->
         <a href="https://www.youtube.com/watch?v=mKSymJVMi7k" target="_blank"> aula de musica sobre harmonia, melodia e ritmo </a>
     </footer>
-   
+   JavaScript
+
+
+// ===================================================
+// [ALTERADO] JAVASCRIPT QUE ATUALIZA O PAINEL LATERAL
+// ===================================================
+const botoes = document.querySelectorAll('.botao-genero');
+const tituloGenero = document.getElementById('tituloGenero');
+const textoGenero = document.getElementById('textoGenero');
+
+botoes.forEach(botao => {
+    botao.addEventListener('click', () => {
+        // Remove estado ativo dos botões antigos
+        document.querySelectorAll('.item-genero').forEach(item => {
+            item.classList.remove('ativo');
+        });
+
+        // Marca o item clicado como ativo
+        botao.parentElement.classList.add('ativo');
+
+        // Pega os dados gravados no próprio botão
+        const titulo = botao.getAttribute('data-titulo');
+        const info = botao.getAttribute('data-info');
+
+        // Escreve os dados no painel do lado direito
+        tituloGenero.textContent = titulo;
+        textoGenero.textContent = info;
+        textoGenero.classList.remove('mensagem-padrao');
+    });
+});
     <!-- JavaScript para abrir/fechar as informações -->
     <script>
         const botoes = document.querySelectorAll('.botao-genero');

@@ -28,7 +28,84 @@
         width: 795px;
         height: 300px;
       }
-    
+    /* ===================================================
+   [NOVO] ESTILOS PARA O LAYOUT LADO A LADO E PAINEL
+   =================================================== */
+
+/* Container que divide em 2 colunas */
+.secao-generos {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+/* Lista na esquerda */
+.lista-generos {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.item-genero {
+    background-color: rgb(187, 153, 255);
+    margin-bottom: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.botao-genero {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botao-genero:hover {
+    background-color: rgb(160, 120, 240);
+}
+
+.item-genero.ativo .botao-genero {
+    background-color: rgb(140, 90, 230);
+    color: white;
+}
+
+/* Painel de características na direita */
+.painel-caracteristicas {
+    flex: 1.2;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 20px;
+    min-height: 200px;
+}
+
+.painel-caracteristicas h3 {
+    margin-top: 0;
+    color: rgb(100, 40, 180);
+    border-bottom: 2px solid rgb(187, 153, 255);
+    padding-bottom: 5px;
+}
+
+.mensagem-padrao {
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsividade para celular */
+@media (max-width: 600px) {
+    .secao-generos {
+        flex-direction: column;
+    }
+    }
      </style>
     
         /* Estilização da lista de gêneros */
